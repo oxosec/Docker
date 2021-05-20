@@ -12,7 +12,7 @@ RUN apt-get -qq update \
     && apt-get -y autoremove
 
 # Installing mega sdk python binding
-ENV MEGA_SDK_VERSION '3.8.8'
+ENV MEGA_SDK_VERSION '3.8.9'
 RUN git clone https://github.com/meganz/sdk.git sdk && cd sdk \
     && git checkout v$MEGA_SDK_VERSION \
     && ./autogen.sh && ./configure --disable-silent-rules --enable-python --with-sodium --disable-examples \
