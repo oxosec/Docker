@@ -12,4 +12,4 @@ docker pull breakdowns/mega-sdk-python:latest
 ```
 
 ## Credits
-[Izzy12](https://github.com/lzzy12/) for original source
+- [Izzy12](https://github.com/lzzy12/) for original source
