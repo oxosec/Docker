@@ -1,4 +1,4 @@
-FROM breakdowns/megasdk:latest
+FROM breakdowns/mega:latest
 
 WORKDIR /usr/src/app
 RUN chmod 777 /usr/src/app
