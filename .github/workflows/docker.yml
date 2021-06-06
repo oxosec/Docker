@@ -1,4 +1,4 @@
-name: MirrorBot Docker builder
+name: Docker
 
 on:
   push:
