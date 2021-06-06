@@ -35,4 +35,4 @@ jobs:
               curl -s "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendmessage" \
               --data "text=${*}&chat_id=${{ secrets.TELEGRAM_TO }}&parse_mode=Markdown&disable_notification=True"
           }
-          sendTG "*MirrorBot docker container has been updated:* [Link](https://hub.docker.com/r/breakdowns/mega-sdk-python/tags)" &> /dev/null
+          sendTG "*Docker container has been updated:* [Link](https://hub.docker.com/r/breakdowns/mega-sdk-python/tags)" &> /dev/null
