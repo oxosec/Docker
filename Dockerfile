@@ -3,8 +3,6 @@ FROM breakdowns/mega:latest
 WORKDIR /usr/src/app
 RUN chmod 777 /usr/src/app
 
-ENV DEBIAN_FRONTEND=noninteractive
-
 RUN apt-get -qq update && \
     apt-get install -y software-properties-common && \
     rm -rf /var/lib/apt/lists/* && \
