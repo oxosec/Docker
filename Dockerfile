@@ -1,7 +1,5 @@
 FROM python:3-slim-buster
 
-ENV DEBIAN_FRONTEND=noninteractive
-
 RUN apt-get -qq update \
     && apt-get -qq install -y --no-install-recommends \
         git g++ gcc autoconf automake \
@@ -29,7 +27,7 @@ RUN apt-get -qq update && \
     apt-get purge -y software-properties-common
 
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
-
-ENV LANG en_US.UTF-8 \
+ENV DEBIAN_FRONTEND=noninteractive \
+    LANG en_US.UTF-8 \
     LANGUAGE en_US:en \
     LC_ALL en_US.UTF-8
