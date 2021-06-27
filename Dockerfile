@@ -11,6 +11,11 @@ RUN apt-get -qq update \
         libssl-dev libfreeimage-dev swig \
     && apt-get -y autoremove
 
+# Setup mirrorbot
+    && curl -fsSLO https://raw.githubusercontent.com/breakdowns/slam-mirrorbot/master/requirements.txt \
+    && pip3 install --no-cache-dir -r requirements.txt \
+    && rm requirements.txt
+
 # Installing Mega sdk Python binding
 ENV MEGA_SDK_VERSION '3.9.1'
 RUN git clone https://github.com/meganz/sdk.git sdk && cd sdk \
@@ -19,9 +24,6 @@ RUN git clone https://github.com/meganz/sdk.git sdk && cd sdk \
     && make -j$(nproc --all) \
     && cd bindings/python/ && python3 setup.py bdist_wheel \
     && cd dist/ && pip3 install --no-cache-dir megasdk-$MEGA_SDK_VERSION-*.whl
-    && curl -fsSLO https://raw.githubusercontent.com/breakdowns/slam-mirrorbot/master/requirements.txt \
-    && pip3 install --no-cache-dir -r requirements.txt \
-    && rm requirements.txt
 
 WORKDIR /usr/src/app
 RUN chmod 777 /usr/src/app
