@@ -20,9 +20,6 @@ RUN git clone https://github.com/meganz/sdk.git sdk && cd sdk \
     && cd bindings/python/ && python3 setup.py bdist_wheel \
     && cd dist/ && pip3 install --no-cache-dir megasdk-$MEGA_SDK_VERSION-*.whl
 
-WORKDIR /usr/src/app
-RUN chmod 777 /usr/src/app
-
 RUN apt-get -qq update && \
     apt-get install -y software-properties-common && \
     rm -rf /var/lib/apt/lists/* && \
