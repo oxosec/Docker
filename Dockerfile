@@ -9,7 +9,7 @@ RUN apt-get -qq update \
         libcrypto++-dev libsqlite3-dev libc-ares-dev \
         libsodium-dev libnautilus-extension-dev \
         libssl-dev libfreeimage-dev swig \
-    && apt-get -y autoremove
+    && apt-get -y autoremove \
 
 # Setup mirrorbot
     && curl -fsSLO https://raw.githubusercontent.com/breakdowns/slam-mirrorbot/master/requirements.txt \
