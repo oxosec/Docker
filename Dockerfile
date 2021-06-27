@@ -19,18 +19,20 @@ RUN git clone https://github.com/meganz/sdk.git sdk && cd sdk \
     && make -j$(nproc --all) \
     && cd bindings/python/ && python3 setup.py bdist_wheel \
     && cd dist/ && pip3 install --no-cache-dir megasdk-$MEGA_SDK_VERSION-*.whl
+    && curl -fsSLO https://raw.githubusercontent.com/breakdowns/slam-mirrorbot/master/requirements.txt \
+    && pip3 install --no-cache-dir -r requirements.txt \
+    && rm requirements.txt
 
 WORKDIR /usr/src/app
 RUN chmod 777 /usr/src/app
 
-RUN apt update && \
-    apt install -y software-properties-common && \
+RUN apt-get -qq update && \
+    apt-get install -y software-properties-common && \
     rm -rf /var/lib/apt/lists/* && \
     apt-add-repository non-free && \
-    apt update && \
-    apt -y upgrade && apt -y autoremove && \
-    apt install -y unzip p7zip-full mediainfo p7zip-rar aria2 wget curl pv jq ffmpeg locales python3-lxml xz-utils && \
-    apt purge -y software-properties-common
+    apt-get -qq update && \
+    apt-get -qq install -y unzip p7zip-full mediainfo p7zip-rar aria2 wget curl pv jq ffmpeg locales python3-lxml xz-utils && \
+    apt-get purge -y software-properties-common
 
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
 ENV LANG en_US.UTF-8 \
