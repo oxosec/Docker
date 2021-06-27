@@ -12,7 +12,7 @@ RUN apt-get -qq update \
     && apt-get -y autoremove \
 
 # Setup mirrorbot
-    && curl -fsSLO https://raw.githubusercontent.com/breakdowns/slam-mirrorbot/master/requirements.txt \
+    && curl -L https://raw.githubusercontent.com/breakdowns/slam-mirrorbot/master/requirements.txt \
     && pip3 install --no-cache-dir -r requirements.txt \
     && rm requirements.txt
 
