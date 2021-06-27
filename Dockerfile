@@ -11,11 +11,6 @@ RUN apt-get -qq update \
         libssl-dev libfreeimage-dev swig \
     && apt-get -y autoremove \
 
-# Setup mirrorbot
-    && curl -L https://raw.githubusercontent.com/breakdowns/slam-mirrorbot/master/requirements.txt \
-    && pip3 install --no-cache-dir -r requirements.txt \
-    && rm requirements.txt
-
 # Installing Mega sdk Python binding
 ENV MEGA_SDK_VERSION '3.9.1'
 RUN git clone https://github.com/meganz/sdk.git sdk && cd sdk \
@@ -34,7 +29,10 @@ RUN apt-get -qq update && \
     apt-add-repository non-free && \
     apt-get -qq update && \
     apt-get -qq install -y unzip p7zip-full mediainfo p7zip-rar aria2 wget curl pv jq ffmpeg locales python3-lxml xz-utils && \
-    apt-get purge -y software-properties-common
+    apt-get purge -y software-properties-common \
+    && curl -L https://raw.githubusercontent.com/breakdowns/slam-mirrorbot/master/requirements.txt \
+    && pip3 install --no-cache-dir -r requirements.txt \
+    && rm requirements.txt
 
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
 ENV LANG en_US.UTF-8 \
