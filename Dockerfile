@@ -35,7 +35,6 @@ RUN apt-get -qq update && \
     && rm requirements.txt
 
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
-ENV TZ Asia/Jakarta
-    LANG en_US.UTF-8 \
+ENV LANG en_US.UTF-8 \
     LANGUAGE en_US:en \
     LC_ALL en_US.UTF-8
