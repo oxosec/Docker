@@ -29,7 +29,7 @@ RUN apt-get -qq update && \
     apt-add-repository non-free && \
     apt-get -qq update && \
     apt-get -qq install -y unzip p7zip-full mediainfo p7zip-rar aria2 wget curl pv jq ffmpeg locales python3-lxml xz-utils && \
-    apt-get purge -y software-properties-common
+    apt-get purge -y software-properties-common \
     curl https://raw.githubusercontent.com/breakdowns/slam-mirrorbot/master/requirements.txt \
     && pip3 install --no-cache-dir -r requirements.txt \
     && rm requirements.txt
